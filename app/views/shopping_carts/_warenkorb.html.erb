@@ -1,0 +1,14 @@
+<div class="row">
+    <% @shopping_cart.order_items.each do |item| %>
+        <div class="col-sm-12 shopping-cart-item d-flex justify-content-between">
+            <div><%= item.menu_item.name %> x <%= item.quantity %> </div>
+            <div><%= item.subtotal %> €</div>
+        </div>
+    <% end %>
+    <div class="col-sm-12 d-flex justify-content-between shopping-cart-total-price">
+        <div> <strong>Gesamt  </div> <div> <%= current_shopping_cart.total_price %>  €</strong> </div> 
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <%= link_to "Bestellen", confirmation_path, class: "btn btn-secondary btn-lg btn-block" %> 
+</div>

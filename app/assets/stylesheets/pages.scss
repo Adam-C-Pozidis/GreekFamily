@@ -1,0 +1,107 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+body {
+    margin-top: 65px;
+    background-color: #E6E4E4;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    background-color: white;
+    border-radius: 7px;
+}
+
+.shopping-cart {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    background-color: white;
+    border-radius: 7px;
+}
+
+.menu-header {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: rgba(25, 25, 25, 0.6);
+    border-bottom: 2px solid grey;
+    p {
+        font-size: 24px;
+    }
+}
+
+.menu-item {
+    border: 1px solid rgba(229, 229, 229, 0.3);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+    background-color: white;
+    color: rgba(25, 25, 25, 0.6);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: .3s ease;
+    
+    &:hover {
+        background-color: whitesmoke;
+        transition: .3s ease;
+        font-weight: bold;
+    }
+    a {
+        text-decoration: none;
+        color: rgba(79, 79, 79, 0.9);
+    }   
+    img {
+        height: 75px;
+        width: auto;
+        margin-left: -15px;
+        transition: .3s ease; 
+    
+        &:hover {
+            height: 160px;
+            transition: .3s ease;
+        }
+    }
+}
+.menu-item-name {
+    font-size: 16px;
+}
+
+.menu-item-price {
+    border-left: 1px solid lightgray;
+    height: 100%;
+    width: 20%;
+}
+
+.carousel-container {
+    margin: 0 5%;
+    
+}
+
+.carousel-item {
+    margin-top: 5px;
+    img {
+        border-radius: 5px;
+        height: 90vh;
+        object-fit: cover;
+    }
+}
+
+
+.confirmation-info {
+    padding: 15px 10px;
+    td,th {
+        padding: 3px;
+        text-align: left;
+        border: 1px solid #dddddd;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    tr:nth-child(even){
+        background-color: #dddddd;
+    }
+}

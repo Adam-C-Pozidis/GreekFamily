@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: MyString
+  phone: MyString
+  name_ordered: MyString
+  completed?: false
+  delivered?: false
+
+two:
+  address: MyString
+  phone: MyString
+  name_ordered: MyString
+  completed?: false
+  delivered?: false

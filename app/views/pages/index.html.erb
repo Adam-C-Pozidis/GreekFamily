@@ -1,0 +1,211 @@
+<div class="carousel-container">
+    <%= render "photo_carousel"  %>
+</div>
+<div class="row">
+    <div class="container col-sm-3 shopping-cart"> 
+        <div class="menu-header col-sm-12 shopping-cart-header">
+            <h4 class="d-flex justify-content-between pt-2">
+                <%= link_to "Warenkorb", shopping_cart_path(@shopping_cart), class: "shopping-cart-partial" %>
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+            </h4>
+        </div>
+            <div id="warenkorb">
+                <%= render "shopping_carts/warenkorb" %>
+            </div>
+    </div>
+
+    <div class="container col-sm-8">
+
+        <div class="menu-header text-center">
+            <p>Vorspeise</p>
+        </div>
+        <div class="menu row">
+            <% @vorspeise.each do |item| %>
+
+                <div class="menu-item col-sm-12 col-md-12 col-lg-6 d-flex justify-content-between" title="<%= item.name %>" data-placement="top" data-toggle="popover" data-trigger="hover" data-content="<%= item.description %>"> 
+                    <%= link_to item do %>
+                        <img class="menu-item-photo" src="https://s1.feelgreece.com/cx/m/0/0/648/93374-viewos.jpg" alt="a photo of a dish">
+                        <div class="menu-item-info">
+                            <div class="text-center menu-item-name">
+                                <%= item.name%>
+                            </div>
+                        <% end %>        
+                        </div>
+                        <div class="menu-item-price d-flex justify-content-center row">
+                            <h6 class="col-sm-12 text-center mt-2"> <strong><%= item.price %> €</strong></h6>
+                            <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modal-<%= item.id %>">
+                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                            </button>
+                            <div class="modal fade" id="modal-<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle"><%= item.name %></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <%= item.description %>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <%= form_for @order_item, remote: true do |f| %>
+                                                <%= f.hidden_field :menu_item_id, :value => item.id%>
+                                                <%= f.number_field :quantity, :value => 1, :min => 1 %>
+                                                <%= f.submit "Add to cart",class:"btn btn-sm btn-success" %>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <% end %>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+            <% end %>
+        </div>
+
+        <div class="menu-header text-center">
+            <p>Salate</p>
+        </div>
+        <div class="menu row">
+            <% @salate.each do |item| %>
+                <div class="menu-item col-sm-12 col-md-12 col-lg-6 d-flex justify-content-between" title="<%= item.name %>" data-placement="right" data-toggle="popover" data-trigger="hover" data-content="<%= item.description %>"> 
+                    <%= link_to item do %>
+                        <img class="menu-item-photo" src="https://s1.feelgreece.com/cx/m/0/0/648/93374-viewos.jpg" alt="a photo of a dish">
+                        <div class="menu-item-info">
+                            <div class="text-center menu-item-name">
+                                <p> <%= item.name%> </p>
+                            </div>
+                        <% end %>        
+                        </div>
+                        <div class="menu-item-price d-flex justify-content-center row">
+                            <h6 class="col-sm-12 text-center mt-2"> <strong><%= item.price %> €</strong></h6>
+                            <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modal-<%= item.id %>">
+                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                            </button>
+                            <div class="modal fade" id="modal-<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle"><%= item.name %></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <%= item.description %>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <%= form_for @order_item do |f| %>
+                                                <%= f.hidden_field :menu_item_id, :value => item.id%>
+                                                <%= f.number_field :quantity, :value => 1, :min => 1 %>
+                                                <%= f.submit "Add to cart",class:"btn btn-sm btn-success" %>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <% end %>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <% end %>
+        </div>
+
+        <div class="menu-header text-center">
+            <p>Empfehlungen</p>
+        </div>
+        <div class="menu row">
+            <% @empfehlungen.each do |item| %>
+                <div class="menu-item col-sm-12 col-md-12 col-lg-6 d-flex justify-content-between" title="<%= item.name %>" data-placement="right" data-toggle="popover" data-trigger="hover" data-content="<%= item.description %>"> 
+                    <%= link_to item do %>
+                        <img class="menu-item-photo" src="https://s1.feelgreece.com/cx/m/0/0/648/93374-viewos.jpg" alt="a photo of a dish">
+                        <div class="menu-item-info">
+                            <div class="text-center menu-item-name">
+                                <p> <%= item.name%> </p>
+                            </div>
+                        <% end %>        
+                        </div>
+                        <div class="menu-item-price d-flex justify-content-center row">
+                            <h6 class="col-sm-12 text-center mt-2"> <strong><%= item.price %> €</strong></h6>
+                            <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modal-<%= item.id %>">
+                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                            </button>
+                            <div class="modal fade" id="modal-<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle"><%= item.name %></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <%= item.description %>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <%= form_for @order_item do |f| %>
+                                                <%= f.hidden_field :menu_item_id, :value => item.id%>
+                                                <%= f.number_field :quantity, :value => 1, :min => 1 %>
+                                                <%= f.submit "Add to cart",class:"btn btn-sm btn-success" %>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <% end %>    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <% end %>
+        </div>
+
+        <div class="menu-header text-center"> 
+            <p>Hauptgerichte</p>
+        </div>
+        <div class="menu row">
+            <% @hauptgerichte.each do |item| %>
+                <div class="menu-item col-sm-12 col-md-12 col-lg-6 d-flex justify-content-between" title="<%= item.name %>" data-placement="right" data-toggle="popover" data-trigger="hover" data-content="<%= item.description %>"> 
+                    <%= link_to item do %>
+                        <img class="menu-item-photo" src="https://s1.feelgreece.com/cx/m/0/0/648/93374-viewos.jpg" alt="a photo of a dish">
+                        <div class="menu-item-info">
+                            <div class="text-center menu-item-name">
+                                <p> <%= item.name%> </p>
+                            </div>
+                        <% end %>        
+                        </div>
+                        <div class="menu-item-price d-flex justify-content-center row">
+                            <h6 class="col-sm-12 text-center mt-2"> <strong><%= item.price %> €</strong></h6>
+                            <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modal-<%= item.id %>">
+                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                            </button>
+                            <div class="modal fade" id="modal-<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle"><%= item.name %></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <%= item.description %>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <%= form_for @order_item do |f| %>
+                                                <%= f.hidden_field :menu_item_id, :value => item.id%>
+                                                <%= f.number_field :quantity, :value => 1, :min => 1 %>
+                                                <%= f.submit "Add to cart",class:"btn btn-sm btn-success" %>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <% end %>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <% end %>
+        </div>
+
+    </div>
+</div>
+

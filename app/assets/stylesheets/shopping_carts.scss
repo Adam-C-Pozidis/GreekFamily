@@ -1,0 +1,30 @@
+// Place all the styles related to the shopping_carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.shopping-cart-item {
+    color: rgba(25, 25, 25, 0.6);
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 5px;
+}
+
+.shopping-cart-total-price {
+    color: rgba(25, 25, 25, 0.7);
+}
+
+.shopping-cart-partial {
+    color: rgba(25, 25, 25, 0.6);
+    text-decoration: none !important;
+    &:hover {
+        color: whitesmoke;
+    }
+}
+
+.shopping-cart-header {
+    &:hover {
+        color: whitesmoke;
+        background-color: rgba(25, 25, 25, 0.6);
+        border-radius: 7px;
+    }
+}

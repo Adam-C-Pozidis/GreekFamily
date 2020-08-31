@@ -1,0 +1,10 @@
+<div class="container confirmation-info">
+    <div class="text-center">
+      <h3>Geschaft!</h3>
+      <%= session[:order]["name_ordered"]%><br>
+      <%= session[:order]["address"] %> <br>
+      <%= session[:order]["phone"] %>
+      <br> <br>
+      <%= link_to "Neu Bestellug", root_path, class: "btn btn-info" %>
+    </div>
+  </div>

@@ -1,0 +1,13 @@
+.navbar-img {
+    height: 45px;
+    transition: .3s ease;
+    &:hover {
+        height: 100px;
+        transition: .3s ease;
+    }
+}
+
+.navbar {
+    border-bottom: 1px solid lightgray;
+    background-color: white;
+}

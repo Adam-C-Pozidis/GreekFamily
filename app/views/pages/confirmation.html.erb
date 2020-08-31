@@ -1,0 +1,56 @@
+<div class="container d-flex flex-column text-center confirmation-info">
+    <h2>Bestellung</h2>
+    <table>    
+        <tr>
+            <th>Menügericht</th>
+            <th>Menge</th>
+            <th>Kost</th>
+        </tr>
+        <%@shopping_cart.order_items.each do |item| %>
+            <tr>
+                <td> <%= item.menu_item.name %> </td> 
+                <td> <%= item.quantity %> </td>
+                <td> <%= item.subtotal %> €</td>
+            </tr>
+        <% end %>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><%= current_shopping_cart.total_price %> €</td>
+        <tr>
+            <td><b>Liefern Kost</b></td>
+            <td></td>
+            <td><b>2.0 €</b></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><b>Gesamnt</b></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><b><%= current_shopping_cart.total_price + 2  %> €</b></td>
+        </tr>
+    </table>
+    <% unless current_shopping_cart.total_price == 0 %>
+        <br>
+        <div class="confirmation-delivery-info">
+            <%= form_for @order do |f| %>
+                Voll Name: <%= f.text_field :name_ordered %> <br>
+                Telefonnummer: <%= f.text_field :phone %> <br>
+                Adresse: <%= f.text_field :address %> <br> <br>
+                <%= f.submit "Bestätigen", class: "btn btn-lg btn-success"%>
+            <% end %>
+        </div>
+    <% else %>
+        <div class="">
+            <h1>Warenkorb ist leer!</h1>
+        </div>
+        <br>
+        <div>
+            <%= link_to "Zurück zum menu", root_path, class: "btn btn-secondary" %>
+        </div>
+    <% end %>
+
+</div>
