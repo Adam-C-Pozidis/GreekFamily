@@ -3,8 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 body {
-    margin-top: 65px;
-    background-color: #E6E4E4;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -42,7 +40,7 @@ body {
     width: 100%;
     margin-bottom: 10px;
     transition: .3s ease;
-    
+
     &:hover {
         background-color: whitesmoke;
         transition: .3s ease;
@@ -51,13 +49,13 @@ body {
     a {
         text-decoration: none;
         color: rgba(79, 79, 79, 0.9);
-    }   
+    }
     img {
         height: 75px;
         width: auto;
         margin-left: -15px;
-        transition: .3s ease; 
-    
+        transition: .3s ease;
+
         &:hover {
             height: 160px;
             transition: .3s ease;
@@ -75,8 +73,6 @@ body {
 }
 
 .carousel-container {
-    margin: 0 5%;
-    
 }
 
 .carousel-item {

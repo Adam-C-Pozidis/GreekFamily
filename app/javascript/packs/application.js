@@ -22,4 +22,4 @@ require("jquery")
 //= require bootstrap
 
 require("packs/popover")
-require("packs/refresh_on_click")
+require("packs/navbar_hide_on_scroll")
